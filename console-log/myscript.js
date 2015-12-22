@@ -11,21 +11,35 @@ function initContentScript() {
     itemHtml = html;
   });
 
-  var searchBotton = $('.lsb');
-  searchBotton.addEventListener('click', search);
+  var searchButton = $('.lsb');
+  searchButton.addEventListener('click', search);
 
   var searchBox = $('#lst-ib');
   searchBox.addEventListener('keydown', search);
 
   function search(e) {
+    setTimeout(function() {
+      if (!searchBox.value) {
+        clear();
+      }
+    },0);
+
     if (e.keyCode === ENTER || e.keyCode === LEFT_CLICK) {
+      clear();
       generateDOM();
     }
   }
 }
 
-function generateDOM() {
+function clear() {
+  var productsElement = $('#products');
 
+  if (productsElement) {
+    productsElement.remove();
+  }
+}
+
+function generateDOM() {
   topNav = $('#top_nav');
   // TODO: get from DB
   var products = [
@@ -54,11 +68,6 @@ function generateDOM() {
   var style = 'margin-left: 120px;';
   var listStyle = 'list-style-type: none;';
   var html = '<div id="products" style="' + style + '"><ul style="' + listStyle + '">' + items + '</ul></div>';
-  var productsElement = $('#products');
-
-  if (productsElement) {
-    productsElement.remove();
-  }
 
   topNav.insertAdjacentHTML('afterend', html);
 }
