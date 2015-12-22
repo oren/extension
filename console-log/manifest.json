@@ -1,7 +1,7 @@
 {
   "name": "google.com in the url",
   "version": "1.0",
-  "description": "Shows a page action for urls which have the letter 'g' in them.",
+  "description": "Shows a page action for google.com",
   "background": {
     "scripts": ["background.js"],
     "persistent": false

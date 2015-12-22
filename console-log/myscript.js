@@ -1,17 +1,26 @@
-document.querySelector('.jsb input').addEventListener("click", function() {
-   console.log('foo');
-  window.postMessage({ type: "FROM_PAGE", text: "Hello from the webpage!" }, "*");
-}, false);
+'use strict';
 
-// var port = chrome.runtime.connect();
+var $ = document.querySelector.bind(document);
+var ENTER = 13;
 
-window.addEventListener("message", function(event) {
-  // We only accept messages from ourselves
-  if (event.source != window)
-    return;
+function initContentScript() {
+  var searchBotton = $('.lsb');
+  searchBotton.addEventListener('click', search);
 
-  if (event.data.type && (event.data.type == "FROM_PAGE")) {
-    console.log("Content script received: " + event.data.text);
-    // port.postMessage(event.data.text);
+  var searchBox = $('#lst-ib');
+  searchBox.addEventListener('keyup', searchBoxUp);
+  searchBox.addEventListener('keydown', searchBoxDown);
+  searchBox.addEventListener('keypress', searchBoxPress);
+
+  function search() {
+    console.log('search db and inject product on top')
   }
-}, false);
+
+  function searchBoxDown(e) {
+    if (e.keyCode === ENTER) {
+      console.log('search db and inject product on top')
+    }
+  }
+}
+
+initContentScript();
