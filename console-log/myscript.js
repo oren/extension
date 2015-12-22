@@ -67,7 +67,8 @@ function generateDOM() {
 
   var style = 'margin-left: 120px;';
   var listStyle = 'list-style-type: none;';
-  var html = '<div id="products" style="' + style + '"><ul style="' + listStyle + '">' + items + '</ul></div>';
+  // var html = '<div id="products" style="' + style + '"><ul style="' + listStyle + '">' + items + '</ul></div>';
+  var html = '<div id="products" style="' + style + '">' + items + '</div>';
 
   topNav.insertAdjacentHTML('afterend', html);
 }
