@@ -24,5 +24,8 @@
     "48" : "icon-48.png",
     "128" : "icon-128.png"
   },
+   "web_accessible_resources": [
+    "templates/*"
+  ],
   "manifest_version": 2
 }
